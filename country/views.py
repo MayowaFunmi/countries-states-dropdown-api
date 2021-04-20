@@ -2371,8 +2371,8 @@ def home(request):
 
 
 def add_country(request):
-    for country in all_countries:
-        Country.objects.create(alpha_2=country[0], name=country[1])
+    #for country in all_countries:
+        #Country.objects.create(alpha_2=country[0], name=country[1])
     return HttpResponse("Countries Added Successfully")
 
 
@@ -2381,8 +2381,8 @@ def add_city(request):
         for i in range(len(state)):
             code = state[0][0]
             name = state[i][1]
-            country = Country.objects.get(alpha_2=code)
-            City.objects.create(country=country, name=name)
+            #country = Country.objects.get(alpha_2=code)
+            #City.objects.create(country=country, name=name)
     return HttpResponse("Cities Added Successfully")
 
 
@@ -2472,8 +2472,8 @@ def nigeria_states(request):
             if code == 'NG':
                 state_list.append(name)
     states = sorted(state_list)
-    for state in states:
-        NigeriaStates.objects.create(name=state)
+    #for state in states:
+        #NigeriaStates.objects.create(name=state)
     return render(request, 'country/nigeria_states.html', {'states': states})
 
 
@@ -2490,8 +2490,8 @@ def local_govt_areas(request):
         for value in state_list:
             state = key
             name = value
-            nig_state = NigeriaStates.objects.get(name=state)
-            LocalGovernmentArea.objects.create(state=nig_state, name=name)
+            #nig_state = NigeriaStates.objects.get(name=state)
+            #LocalGovernmentArea.objects.create(state=nig_state, name=name)
     return HttpResponse("Local Government Areas Added Successfully")
 
 
