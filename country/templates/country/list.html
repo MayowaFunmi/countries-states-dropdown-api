@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}World Countries List{% endblock %}
+
+{% block content %}
+    <div>
+        Click <button><a href="{% url 'country:get_states' %}">Here</a></button> to list the states/provinces in each of the countries.<br>
+        <button><a href="{% url 'home' %}">Go Home</a></button>
+    </div>
+
+    <div id="top">
+        <h2>The table below shows the list of all {{ total }} countries in the world:</h2>
+    </div>
+    <table class="table table-striped" >
+        <thead>
+            <tr>
+                <th>S/No</th>
+                <th>Country Code</th>
+                <th>Country Name</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for country in countries %}
+            <tr class="table-active">
+                <td>{{ country.id }}</td>
+                <td>{{ country.alpha_2 }}</td>
+                <td>{{ country.name }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <button><a href="#top">Back To TOP</a></button>
+    <button><a href="{% url 'home' %}">Go Home</a></button>
+
+{% endblock %}

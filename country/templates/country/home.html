@@ -1,0 +1,140 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <title>Web API project</title>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href='https://fonts.googleapis.com/css?family=Lato:300,400,300italic,400italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <!-- FontAwesome JS-->
+	<script defer src="{% static 'assets/fontawesome/js/all.min.js' %}"></script>
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="{% static 'assets/plugins/bootstrap/css/bootstrap.min.css' %}">
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="{% static 'assets/plugins/prism/prism.css' %}">
+    <!-- Theme CSS -->
+    <link id="theme-style" rel="stylesheet" href="{% static 'assets/css/theme-1.css' %}">
+    <!-- GitHub Button -->
+    <script async defer src="{% static 'https://buttons.github.io/buttons.js' %}"></script>
+</head>
+
+<body data-spy="scroll">
+
+
+
+    <!---//Facebook button code-->
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
+    <!-- ******HEADER****** -->
+    <header id="header" class="header">
+        <div class="container">
+            <h1 class="logo float-left">
+                <a class="scrollto" href="#promo">
+                    <span class="logo-title" style="padding-left: 80px;">devMayor</span>
+                    <div class="profile" style="position: absolute; left:30px; top:15px; width: 100px; height:100px;">
+                        <img class="img-fluid" src="{% static 'assets/images/profile.jpg' %}" style="max-width: 100%; height: auto; border-radius: 50%;" alt="" />
+                    </div>
+                </a>
+
+            </h1><!--//logo-->
+            <nav id="main-nav" class="main-nav navbar-expand-md float-right" role="navigation">
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button><!--//nav-toggle-->
+
+                <div class="navbar-collapse collapse" id="navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'country:country_list' %}">List Countries</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'country:get_states' %}">Country/States</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'country:nigeria_states' %}">Nigerian States</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'country:get_states_lga' %}">Local Govt</a></li>
+                        <li class="nav-item last"><a class="nav-link" href="/api_country/">API</a></li>
+                    </ul><!--//nav-->
+                </div><!--//navabr-collapse-->
+            </nav><!--//main-nav-->
+        </div>
+    </header><!--//header-->
+
+    <!-- ******PROMO****** -->
+    <section id="promo" class="promo section offset-header" style="padding-top: 70px;">
+        <div class="container text-center">
+            <h2 class="title">dev<span class="highlight">Mayor</span></h2>
+            <p class="intro">
+                This is a 3-in-1 project:
+                <div style="display: flex; flex-wrap: wrap; align-content: center;">
+                    <ol>
+                        <li>A dependent dropdown list of world countries(ISO 3166) and their respective states/provinces/subdivisions,</li>
+                        <li>A dependent dropdown list of Nigerian states and their respective local government ares</li>
+                        <li>A restful api (using django rest framework) providing data for the two listed above and can be consumed by any javascript frontend library/framework</li>
+                    </ol>
+                </div>
+            </p>
+            <ul class="meta list-inline" style="margin-top: 10px; margin-bottom: 10px;">
+                <li class="list-inline-item"><a href="https://github.com/MayowaFunmi/world-countries-and-states" target="_blank">View on GitHub</a></li>
+            </ul><!--//meta-->
+        </div><!--//container-->
+        <div class="social-media">
+            <div class="social-media-inner container text-center">
+                <ul class="list-inline mb-2">
+                    <li class="list-inline-item twitter-follow"><a href="https://twitter.com/mayowaakinade" target="_blank" class="twitter-follow-button" data-show-count="false">Follow @mayowaakinade</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ******FEATURES****** -->
+    <section id="features" class="features section" style="padding: 10px 0;">
+        <div class="container text-center">
+            <h2 class="title">Features</h2>
+            <ul class="feature-list list-unstyled">
+                <li><i class="fas fa-check"></i>HTML, CSS, JavaScript, Ajax, Python, Django, DjangoRestFramework</li>
+                <li><i class="fas fa-check"></i>List World Countries</li>
+                <li><i class="fas fa-check"></i>Dependent/Dropdown of world countries and states/provinces </li>
+                <li><i class="fas fa-check"></i>Dependent/Dropdown of Nigerian states and local government areas</li>
+                <li><i class="fas fa-check"></i>Django Restful api to provide data</li>
+                <li><i class="fas fa-check"></i>No css (except for this page)</li>
+            </ul>
+        </div><!--//container-->
+    </section>
+
+    <!-- ******FOOTER****** -->
+    <footer class="footer">
+        <div class="container text-center">
+            <!--/* This template is free as long as you keep the footer attribution link. If you'd like to use the template without the attribution link, you can buy the commercial license via our website: themes.3rdwavemedia.com Thank you for your support. :) */-->
+            <small class="copyright">Designed by <a href="https://github.com/MayowaFunmi" target="_blank">Akinade Mayowa</a> for developers</small>
+        </div><!--//container-->
+    </footer><!--//footer-->
+
+    <!-- Javascript -->
+    <script type="text/javascript" src="{% static 'assets/plugins/jquery-3.4.1.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/plugins/jquery.easing.1.3.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/plugins/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/plugins/jquery-scrollTo/jquery.scrollTo.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/plugins/prism/prism.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/js/main.js' %}"></script>
+
+
+</body>
+</html>
+

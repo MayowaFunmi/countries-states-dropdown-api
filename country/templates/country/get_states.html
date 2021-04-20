@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+{% block title %}Get States of Countries{% endblock %}
+
+{% block content %}
+    <div>
+        <button><a href="{% url 'home' %}">Go Home</a></button>
+    </div>
+    <div>
+        <form method="POST">
+            {% csrf_token %}
+            <label>Select A Country: </label>
+            <select name="get_country" id="get_country">
+                {% for country in countries %}
+                    <option id='country' value="{{ country.alpha_2 }}">{{ country.name }}</option>
+                {% endfor %}
+            </select>
+            <input  id="submit" type="submit" value="Get States">
+        </form>
+    </div>
+
+    <div>
+        <h3 id="number">
+        
+        </h3>
+        <p id="list_states">
+
+        </p>
+    </div>
+
+
+{% endblock %}
+
+{% block javascript %}
+    <script>
+        var list_states = document.getElementById('list_states');
+        var number = document.getElementById('number');
+
+        $(document).ready(function() {
+            $('select#get_country').change(function() {
+                var id = $(this).children('option:selected').val();
+
+                $('#submit').click(function(e) {
+                    e.preventDefault();
+
+                    // get id of country
+
+                    $.ajax({
+                        url: "{% url 'country:get_states_ajax' %}",
+                        type: 'POST',
+                        data: {
+                            'get_country': id,
+                            csrfmiddlewaretoken: '{{ csrf_token }}',
+                        },
+                        dataType: 'json',
+                        success: function (response) {
+                            const data = response.data
+                            console.log(data)
+                            var states;
+                            data.forEach(el => {
+                                states = el.names;
+                                //list_states.innerHTML += `${el.names} <br>`
+                            })
+                            number.innerHTML = `There are ${states.length} states available for this country:`
+
+                            states.forEach(state => {
+                                list_states.innerHTML += `<ul>
+                                        <li>${state}</li>
+                                    </ul>`
+                            })
+                        }
+                    })
+
+                })
+            });
+        });
+    </script>
+
+{% endblock javascript %}
+  

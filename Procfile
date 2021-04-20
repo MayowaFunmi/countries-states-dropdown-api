@@ -1,0 +1,1 @@
+web: gunicorn dropdown_project.wsgi --log-file -

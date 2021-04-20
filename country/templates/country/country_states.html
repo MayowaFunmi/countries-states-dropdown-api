@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Get States of Countries{% endblock %}
+
+{% block content %}
+    <h2>The list of  all the {{ total }} states/divisions/provinces in {{ country }} are shown below:</h2>
+
+    <p>
+            <ol>
+            {% if name_list %}
+            {% for name in name_list %}
+                <li>
+                    {{ name }}
+                </li>
+            {% endfor %}
+            {% else %}
+                {{ country }} has no states/divisions/provinces
+            {% endif %}
+            </ol>
+    </p>
+{% endblock %}

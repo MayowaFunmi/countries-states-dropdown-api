@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% block title %}Get Local Governments of States in Nigeria{% endblock %}
+
+{% block content %}
+    <div>
+        <button><a href="{% url 'home' %}">Go Home</a></button>
+    </div>
+    <div>
+        <form method="POST">
+            {% csrf_token %}
+            <label>Select A State: </label>
+            <select name="get_state" id="get_state">
+                {% for state in states %}
+                    <option id='state' value="{{ state.name }}">{{ state.name }}</option>
+                {% endfor %}
+            </select>
+            <input  id="submit" type="submit" value="Get Local Government Areas">
+        </form>
+    </div>
+
+    <div>
+        <h3 id="number">
+
+        </h3>
+        <p id="list_lga">
+
+        </p>
+    </div>
+
+
+{% endblock %}
+
+{% block javascript %}
+    <script>
+        var list_lga = document.getElementById('list_lga');
+        var number = document.getElementById('number');
+
+        $(document).ready(function() {
+            $('select#get_state').change(function() {
+                var id = $(this).children('option:selected').val();
+
+                $('#submit').click(function(e) {
+                    e.preventDefault();
+
+                    // get id of state
+
+                    $.ajax({
+                        url: "{% url 'country:get_states_lga_ajax' %}",
+                        type: 'POST',
+                        data: {
+                            'get_state': id,
+                            csrfmiddlewaretoken: '{{ csrf_token }}',
+                        },
+                        dataType: 'json',
+                        success: function (response) {
+                            const data = response.data
+                            var lgas;
+                            data.forEach(el => {
+                                lgas = el.names;
+                                //list_states.innerHTML += `${el.names} <br>`
+                            })
+                            number.innerHTML = `There are ${lgas.length} Local Government Areas available for this state:`
+
+                            lgas.forEach(lga => {
+                                list_lga.innerHTML += `<ul>
+                                        <li>${lga}</li>
+                                    </ul>`
+                            })
+                        }
+                    })
+
+                })
+            });
+        });
+    </script>
+
+{% endblock javascript %}
