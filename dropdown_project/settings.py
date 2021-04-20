@@ -32,9 +32,9 @@ environ.Env.read_env()
 SECRET_KEY = env("SECRET_KEY", default="unsafe-secret-key")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'world-countries-and-states-api.herokuapp.com']
 
 
 # Application definition
@@ -48,6 +48,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'country',
     'api_country',
+    'django_filters',
+    'storages',
     'rest_framework',
     'rest_framework_simplejwt.token_blacklist',
     'corsheaders',
@@ -165,6 +167,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = STATIC_DIR
+#STATIC_ROOT = BASE_DIR / 'staticfiles'
 MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'
 
