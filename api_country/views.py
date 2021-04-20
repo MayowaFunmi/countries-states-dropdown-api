@@ -38,7 +38,7 @@ class RegisterView(generics.CreateAPIView):
 # user list view
 class UserView(generics.ListAPIView):
     queryset = User.objects.all()
-    permission_classes = (IsAuthenticated,)
+    permission_classes = (AllowAny,)
     serializer_class = UserSerializer
 
 
@@ -46,22 +46,22 @@ class UserView(generics.ListAPIView):
 class CityApi(generics.ListAPIView):
     queryset = City.objects.all()
     serializer_class = CitySerializer
-    permission_classes = (IsAuthenticated,)
+    permission_classes = (AllowAny,)
 
 
 class CountryApi(generics.ListAPIView):
     queryset = Country.objects.all()
     serializer_class = CountrySerializer
-    permission_classes = (IsAuthenticated,)
+    permission_classes = (AllowAny,)
 
 
 class LocalGovernmentApi(generics.ListAPIView):
     queryset = LocalGovernmentArea.objects.all()
     serializer_class = LocalGovernmentAreaSerializer
-    permission_classes = (IsAuthenticated,)
+    permission_classes = (AllowAny,)
 
 
 class NigeriaStatesApi(generics.ListAPIView):
     queryset = NigeriaStates.objects.all()
     serializer_class = NigeriaStatesSerializer
-    permission_classes = (IsAuthenticated,)
+    permission_classes = (AllowAny,)
