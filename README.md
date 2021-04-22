@@ -1,0 +1,1 @@
+A dependent/dropdown list of all countries in the world and their respective states/provinces/subdivisions, and of the states in Nigeria and their respective local government areas. Then an API to provide data for these dependent dropdowns
